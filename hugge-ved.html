@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body style="background-color: rgb(167, 191, 167)">
-    <img id="horse" src="../assets/horse.png" style="width: 300px">
-    <img id="tree" src="../assets/tree.png" style="width: 300px">
+  <body style="background-color: rgb(167, 191, 167)">
+    <img id="horse" src="../assets/horse.png" style="width: 300px" />
+    <img id="tree" src="../assets/tree.png" style="width: 300px" />
     <p id="wood-txt">Antall tre: 0</p>
     <p id="horse-txt">Antall hester: 0</p>
 
     <script>
-        const horse = document.getElementById("horse");
-        let woodTxt = document.querySelector("#wood-txt");
-        let horseTxt = document.querySelector("#horse-txt");
+      const horse = document.getElementById("horse");
+      let woodTxt = document.querySelector("#wood-txt");
+      let horseTxt = document.querySelector("#horse-txt");
 
-        let amountOfWood = 0;
-        let horses = 0;
+      let amountOfWood = 0;
+      let horses = 0;
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key == "c") {
+          amountOfWood += 10;
+          updateCurrency();
+        }
+      });
+      horse.addEventListener("click", buyHorse);
+      function buyHorse() {
+        if (amountOfWood >= 100) {
+          amountOfWood -= 100;
+          horses++;
+          updateCurrency();
+        } else {
+          alert("Du har ikke nok wood!");
+        }
+      }
+
+      function updateCurrency() {
+        woodTxt.innerHTML = `Antall tre: ${amountOfWood}`;
+        horseTxt.innerHTML = `Antall hester: ${horses}`;
+      }
     </script>
-</body>
-
+  </body>
 </html>
