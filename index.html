@@ -13,6 +13,35 @@
     <script>
       const showBtn = document.querySelector("#show-btn");
       const animalsContainer = document.querySelector("#animals-container");
+      let animalsArray = [
+        {
+          name: "Monstero",
+          imgUrl: "monster1.png",
+        },
+        {
+          name: "Noldus",
+          imgUrl: "monster2.png",
+        },
+        {
+          name: "Poppers",
+          imgUrl: "monster3.png",
+        },
+        {
+          name: "Blåtann",
+          imgUrl: "monster4.png",
+        },
+        {
+          name: "Suppert",
+          imgUrl: "monster5.png",
+        },
+      ];
+      showBtn.addEventListener("click", getRandomAnimal);
+
+      function getRandomAnimal() {
+        let randomAnimal = Math.floor(Math.random() * animalsArray.length);
+        console.log(randomAnimal);
+      }
+      console.log(animalsArray);
     </script>
   </body>
 </html>
