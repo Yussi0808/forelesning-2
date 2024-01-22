@@ -39,7 +39,30 @@
 
       function getRandomAnimal() {
         let randomAnimal = Math.floor(Math.random() * animalsArray.length);
-        console.log(randomAnimal);
+
+        createAnimalCard(animalsArray[randomAnimal]);
+      }
+      function createAnimalCard(animal) {
+        console.log(animal);
+        const animalContainer = document.createElement("div");
+
+        animalContainer.style.backgroundColor = generateRandomColor();
+        const animalImage = document.createElement("img");
+        animalImage.src = `assets/${animal.imgUrl}`;
+        animalImage.style.width = "100px";
+        const animalName = document.createElement("h1");
+        animalName.innerHTML = animal.name;
+
+        animalContainer.append(animalImage, animalName);
+        animalsContainer.append(animalContainer);
+      }
+
+      function generateRandomColor() {
+        const r = Math.floor(Math.random() * 255);
+        const g = Math.floor(Math.random() * 255);
+        const b = Math.floor(Math.random() * 255);
+
+        return `rgb(${r}, ${g}, ${b})`;
       }
       console.log(animalsArray);
     </script>
